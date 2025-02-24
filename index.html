@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Baby, For You</title>
+    <style>
+        body {
+            background: url('rom.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+            transition: background 2s ease-in-out;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 50px;
+            text-shadow: 2px 2px 10px red;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .gift-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        .click-text {
+            font-size: 2em;
+            color: rgb(247, 107, 107);
+            text-shadow: 2px 2px 5px pink;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .gift-button {
+            width: 150px;
+            height: 150px;
+            background: url('un.png') no-repeat center center;
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gift-button:hover {
+            transform: scale(1.1);
+        }
+        .floating-image {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            cursor: pointer;
+            display: none;
+            filter: drop-shadow(0px 0px 10px rgb(241, 124, 143));
+        }
+        #footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 2em;
+            text-shadow: 2px 2px 10px rgb(46, 2, 9);
+        }
+
+        /* Circular Motion */
+        @keyframes rotateLeft {
+            0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+        }
+        @keyframes rotateRight {
+            0% { transform: rotate(0deg) translateX(-150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(-150px) rotate(-360deg); }
+        }
+        @keyframes rotateTop {
+            0% { transform: rotate(0deg) translateY(150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateY(150px) rotate(-360deg); }
+        }
+        @keyframes rotateBottom {
+            0% { transform: rotate(0deg) translateY(-150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateY(-150px) rotate(-360deg); }
+        }
+
+        /* Fade In */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Love Message */
+        #loveMessage {
+            font-size: 2em;
+            color: pink;
+            text-shadow: 2px 2px 10px rgb(0, 0, 0);
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>GOOD MORNING, MY LOVE 💖</h1>
+
+    <!-- Audio -->
+    <audio id="loveSong" loop>
+        <source src="SN1.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Gift Box with Click Text -->
+    <div class="gift-wrapper">
+        <div class="click-text">ARE EE ROSE KI KAHAI XAI DEKHU TA?? 💖</div>
+        <button class="gift-button" id="giftButton"></button>
+    </div>
+
+    <!-- Floating Images in Circular Motion -->
+    <div id="imageContainer">
+        <img class="floating-image" id="image1" src="PC 1.jpg" style="left: 10%; top: 50%;">
+        <img class="floating-image" id="image2" src="PC2.jpg" style="right: 10%; top: 50%;">
+        <img class="floating-image" id="image3" src="pc3.jpg" style="left: 50%; top: 10%;">
+    </div>
+
+    <!-- Love Message -->
+    <div id="loveMessage">SKY'S HIGH THEODERON  💕</div>
+
+    <!-- Footer -->
+    <div id="footer">अहाँ सँ शेनाह करैत छी❤️</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const giftButton = document.getElementById("giftButton");
+            const loveSong = document.getElementById("loveSong");
+
+            giftButton.addEventListener("click", function () {
+                // Change background color softly
+                document.body.style.background = "rgba(255, 182, 193, 0.2)";
+
+                // Show images and start animations
+                const img1 = document.getElementById("image1");
+                const img2 = document.getElementById("image2");
+                const img3 = document.getElementById("image3");
+
+                img1.style.display = "block";
+                img1.style.animation = "rotateLeft 5s linear infinite";
+
+                img2.style.display = "block";
+                img2.style.animation = "rotateRight 5s linear infinite";
+
+                img3.style.display = "block";
+                img3.style.animation = "rotateTop 5s linear infinite";
+
+                // Show love message
+                document.getElementById("loveMessage").style.display = "block";
+
+                // Play audio only if it's not already playing
+                if (loveSong.paused) {
+                    loveSong.play().catch(error => {
+                        console.error("Audio play failed:", error);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
